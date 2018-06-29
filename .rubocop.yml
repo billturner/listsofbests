@@ -1,7 +1,10 @@
-AllCops:
-  RunRailsCops: true
+Rails:
+  Enabled: true
 
 Bundler/OrderedGems:
+  Enabled: false
+
+Layout/AlignParameters:
   Enabled: false
 
 Layout/EmptyLinesAroundBlockBody:
@@ -11,6 +14,9 @@ Layout/EmptyLinesAroundBlockBody:
 Style/NumericLiterals:
   Exclude:
     - 'db/schema.rb'
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: 'compact'
 
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
@@ -47,4 +53,3 @@ Metrics/LineLength:
   Max: 100
   Exclude:
     - 'config/initializers/backtrace_silencers.rb'
-

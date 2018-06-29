@@ -1,24 +1,15 @@
-# PostgreSQL. Versions 9.1 and up are supported.
-
 default: &default
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 development:
   <<: *default
-  database: listsofbests_dev
-
-  # The specified database role being used to connect to postgres.
-  # To create additional roles in postgres see `$ createuser --help`.
-  # When left blank, postgres will use the default role. This is
-  # the same name as the operating system user that initialized the database.
-  username: listsofbests_dev
-
-  # The password associated with the postgres role (username).
-  # password:
+  database: <%= ENV['DB_NAME'] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -43,7 +34,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: listsofbests_test
+  database: <%= ENV['DB_NAME'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

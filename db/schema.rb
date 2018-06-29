@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_26_015157) do
+ActiveRecord::Schema.define(version: 2018_06_26_074201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "lists", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.text "description"
+    t.string "list_type", limit: 25, null: false
+    t.string "source_url", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "published", default: true
+    t.datetime "published_at"
+  end
 
 end
