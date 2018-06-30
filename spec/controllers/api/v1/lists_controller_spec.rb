@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ListsController, type: :controller do
   let(:list) { create(:list) }
-  let(:list2) { create(:list, name: 'Another list', list_type: 'book') }
+  let(:list2) { create(:list, name: 'Another list', media_type: 'book') }
 
   describe '#index' do
     subject { get :index }
+
     before { list }
     before { list2 }
 
