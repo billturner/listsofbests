@@ -1,4 +1,7 @@
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# first_list = List.create(
+List.create(
+  name: 'Sample list',
+  description: 'This is the first example list of books',
+  media_type: 'book',
+  published: true
+)
