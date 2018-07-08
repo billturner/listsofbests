@@ -7,7 +7,7 @@ module Api::V1
 
     def show
       list = List.find params[:id]
-      render json: list
+      render json: list, show_entries: true
     end
   end
 end

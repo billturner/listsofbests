@@ -56,4 +56,12 @@ RSpec.describe List, type: :model do
       expect(list.published_at).to eq(nil)
     end
   end
+
+  describe 'list with entries' do
+    let(:full_list) { create(:list, :with_entries) }
+
+    it 'has 3 entries' do
+      expect(full_list.media.size).to eq(3)
+    end
+  end
 end

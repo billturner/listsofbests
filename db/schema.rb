@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_26_074201) do
+ActiveRecord::Schema.define(version: 2018_07_07_221844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "list_assignments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "list_id", null: false
+    t.uuid "media_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id", "media_id"], name: "index_list_assignments_on_list_id_and_media_id"
+  end
 
   create_table "lists", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", limit: 255, null: false
@@ -25,6 +33,16 @@ ActiveRecord::Schema.define(version: 2018_06_26_074201) do
     t.datetime "updated_at", null: false
     t.boolean "published", default: true
     t.datetime "published_at"
+  end
+
+  create_table "media", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "media_type"
+    t.string "name"
+    t.string "description"
+    t.string "creator"
+    t.datetime "original_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

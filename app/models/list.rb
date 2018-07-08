@@ -8,6 +8,9 @@ class List < ApplicationRecord
   validates :published,
     inclusion: { in: [true, false] }
 
+  has_many :list_assignments, dependent: :destroy
+  has_many :media, through: :list_assignments, dependent: :destroy
+
   default_scope { where(published: true).order(name: :asc) }
 
   before_save :set_published_at
