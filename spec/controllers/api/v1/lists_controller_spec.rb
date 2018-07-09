@@ -37,7 +37,7 @@ RSpec.describe Api::V1::ListsController, type: :controller do
 
     it 'returns all published lists' do
       json = JSON.parse(subject.body)
-      expect(json['name']).to eq(list.name)
+      expect(json['list']['name']).to eq(list.name)
     end
 
     it 'does not return unpublished list' do
