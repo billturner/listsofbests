@@ -1,5 +1,5 @@
 Rails.application.routes.default_url_options[:host] = ENV['HTTP_HOST'] || 'localhost'
-Rails.application.routes.default_url_options[:port] = ENV['HTTP_PORT'] || '3000'
+Rails.application.routes.default_url_options[:port] = ENV['HTTP_PORT'] || '3001'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
