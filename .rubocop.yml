@@ -45,14 +45,27 @@ Style/StringLiterals:
     - 'config/application.rb'
     - 'config/puma.rb'
     - 'db/schema.rb'
+    - 'db/seeds/*.rb'
 
 Style/SymbolArray:
   EnforcedStyle: brackets
 
+Style/WordArray:
+  Exclude:
+    - 'db/schema.rb'
+
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context']
+  Exclude:
+    - 'db/schema.rb'
 
 Metrics/LineLength:
   Max: 100
   Exclude:
     - 'config/initializers/backtrace_silencers.rb'
+    - 'db/schema.rb'
+    - 'db/seeds/*.rb'
+
+Naming/VariableNumber:
+  Exclude:
+    - 'db/seeds/*.rb'

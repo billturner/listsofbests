@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_07_221844) do
+ActiveRecord::Schema.define(version: 2018_07_14_221953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_07_07_221844) do
     t.uuid "media_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
     t.index ["list_id", "media_id"], name: "index_list_assignments_on_list_id_and_media_id"
   end
 
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_07_07_221844) do
     t.datetime "updated_at", null: false
     t.boolean "published", default: true
     t.datetime "published_at"
+    t.string "info_url"
   end
 
   create_table "media", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

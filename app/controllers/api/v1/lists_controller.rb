@@ -2,12 +2,15 @@ module Api::V1
   class ListsController < ApplicationController
     def index
       lists = List.all
-      render json: lists, adapter: :json
+      render json: lists
     end
 
     def show
-      list = List.find params[:id]
-      render json: list, adapter: :json, show_entries: true
+      list = List
+        .includes(:list_assignments, list_assignments: :media)
+        .where(id: params[:id])
+        .first
+      render json: list, show_entries: true
     end
   end
 end

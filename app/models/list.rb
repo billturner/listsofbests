@@ -12,6 +12,7 @@ class List < ApplicationRecord
   has_many :media, through: :list_assignments, dependent: :destroy
 
   default_scope { where(published: true).order(name: :asc) }
+  scope :unpublished, -> { where(published: false) }
 
   before_save :set_published_at
 
